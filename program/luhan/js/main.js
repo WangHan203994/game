@@ -5,8 +5,10 @@
 
     var app = {
         mod : 2,
+        normalImg : 'skin/images/1.jpg',
+        targetImg : 'skin/images/2.jpg',
         tds : null,
-        tableHeigth : Math.floor($(window).height() * 0.65),
+        tableHeigth : Math.floor($(window).height() * 0.6),
         rightClass : 'right',
         container : $('#gameArea'),
         counter : 0,
@@ -15,15 +17,25 @@
         timelimitBox : $('#time'),
         status : true ,
         init : function(){
+            this.initEvent();
+            this.drawTable( this.mod );
+            this.initTimer();
+
+            if( !window.name ){
+                window.name = JSON.stringify({
+                    current : 0,
+                    best : 0
+                });
+            }
+        },
+        initTimer : function(){
             var me = this;
-            me.initEvent();
-            me.drawTable( this.mod );
             var timer = setInterval(function(){
                 me.timelimitBox.html( --me.timelimit );
                 if( !me.timelimit ){
                     clearInterval( timer );
                     me.status = false;
-                    window.name = me.counter;
+                    me.record();
                 }
             },1000);
         },
@@ -33,34 +45,56 @@
                 if( $(this).hasClass('right') ){
                     me.counterBox.html(++me.counter);
                     if( !me.status ){
-                        //跳转？
+                        me.container.undelegate('td','click');
+                        me.record();
                     }else{
                         var counter = me.counter;
-                        if( counter == 8 ){
-                            me.mod = 10;
-                            me.drawTable( me.mod );
-                        }else if( counter == 6 ){
-                            me.mod = 8;
-                            me.drawTable( me.mod );
-                        }else if( counter == 4 ){
-                            me.mod = 6;
-                            me.drawTable( me.mod );
-                        }else if(counter == 2){
-                            me.mod = 4;
-                            me.drawTable( me.mod );
-                        }else{
-                            me.drawTable( me.mod , true );
+                        switch( counter ){
+                            case 8 :
+                                me.mod = 8;
+                                me.drawTable( me.mod );
+                                break;
+                            case 6 :
+                                me.mod = 6;
+                                me.drawTable( me.mod );
+                                break;
+                            case 4 :
+                                me.mod = 4;
+                                me.drawTable( me.mod );
+                                break;
+                            case  2 :
+                                me.mod = 2;
+                                me.drawTable( me.mod );
+                                break;
+                            default:
+                                me.drawTable( me.mod , true );
                         }
+
+//                        if( counter == 8 ){
+//                            me.mod = 10;
+//                            me.drawTable( me.mod );
+//                        }else if( counter == 6 ){
+//                            me.mod = 8;
+//                            me.drawTable( me.mod );
+//                        }else if( counter == 4 ){
+//                            me.mod = 6;
+//                            me.drawTable( me.mod );
+//                        }else if(counter == 2){
+//                            me.mod = 4;
+//                            me.drawTable( me.mod );
+//                        }else{
+//                            me.drawTable( me.mod , true );
+//                        }
                     }
                 }
             });
         },
-        drawTable : function( mod , switchOn){
+        drawTable : function( mod , switchOn ){
             var random = Math.floor( Math.random() * mod * mod );
             var length = Math.floor( this.tableHeigth / mod );
             if( !switchOn ){
-                var tdTmpl = '<td><img width="'+length+'" height="'+length+'" src="skin/images/1.jpg"></td>';
-                var tdRightTmpl = '<td class="right"><img width="'+length+'" height="'+length+'" src="skin/images/2.jpg"></td>';
+                var tdTmpl = '<td><img width="'+length+'" height="'+length+'" src="'+this.normalImg+'"></td>';
+                var tdRightTmpl = '<td class="right"><img width="'+length+'" height="'+length+'" src="'+this.targetImg+'"></td>';
                 var temp = '', counter = 0 ,
                     i , j ;
                 for( i = 0 ; i < mod ; i ++ ){
@@ -78,10 +112,20 @@
                 this.container.html( temp );
                 this.tds = this.container.find('td');
             }else{
-                this.tds.filter('.right').html('<img width="'+length+'" height="'+length+'" src="skin/images/1.jpg">').removeClass('right');
-                this.tds.eq(random).html('<img width="'+length+'" height="'+length+'" src="skin/images/2.jpg">').addClass('right');
+                this.tds.filter('.right').html('<img width="'+length+'" height="'+length+'" src="'+this.normalImg+'">').removeClass('right');
+                this.tds.eq(random).html('<img width="'+length+'" height="'+length+'" src="'+this.targetImg+'">').addClass('right');
 
             }
+        },
+        record : function(){
+            var tempObj = JSON.parse(window.name);
+            if( tempObj.best < this.counter  ){
+                tempObj.best = this.counter;
+            }
+            tempObj.current = this.counter;
+
+            window.name = JSON.stringify(tempObj);
+            window.location.href = 'end.html';
         }
     };
 
