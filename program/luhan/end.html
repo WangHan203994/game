@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" charset="UTF-8"/>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="skin/global.css">
+    <!--<script type="text/javascript" src="http://zeptojs.com/zepto.min.js"></script>-->
+</head>
+<body>
+    <div class="main">
+        <p id="share">
+            你在60s内亲亲了鹿晗<span id="result">0</span>次！击败了<span id="rate">0</span>%的粉丝！
+        </p>
+        <p>
+            爱慕值 ：<span id="iValue">0</span>
+        </p>
+        <p>
+            获得称号 ：<span id="title">鹿晗的小棉袄</span>
+        </p>
+        <p>
+            最高纪录 ：<span id="best">0</span>
+        </p>
+
+        <a href="luhan.html" class="btn">再次挑战</a>
+
+    </div>
+</body>
+<script type="text/javascript">
+    (function(){
+        if( window.name ){
+            var obj = JSON.parse( window.name );
+            var app = {
+                init : function(){
+                    this.initRecord();
+                    this.initShare();
+                    this.initLevel();
+                },
+                initRecord : function(){
+                    var result = obj.current;
+                    var best = obj.best;
+                    document.getElementById('result').innerHTML = result;
+                    document.getElementById('iValue').innerHTML = result;
+                    document.getElementById('best').innerHTML = best;
+                },
+                initLevel : function(){
+
+                    document.getElementById('rate').innerHTML = 90;
+                    document.getElementById('title').innerHTML = '鹿晗的小背心';
+                },
+                initShare : function(){
+                    var text = document.getElementById('share').innerText;
+                    console.log( text );
+                }
+            };
+
+            app.init();
+        }
+    })();
+</script>
+</html>
