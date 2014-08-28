@@ -3,8 +3,11 @@
  */
 (function( window , $ ){
 
+    var map = { 0 : 2 , 2 : 4 , 4 : 6 , 6 : 8 }; //key : mod
+
     var app = {
-        mod : 2,
+        ruleMap : map,
+        mod : map['0'] ,
         normalImg : 'skin/images/1.jpg',
         targetImg : 'skin/images/2.jpg',
         tds : null,
@@ -49,42 +52,13 @@
                         me.record();
                     }else{
                         var counter = me.counter;
-                        switch( counter ){
-                            case 8 :
-                                me.mod = 8;
-                                me.drawTable( me.mod );
-                                break;
-                            case 6 :
-                                me.mod = 6;
-                                me.drawTable( me.mod );
-                                break;
-                            case 4 :
-                                me.mod = 4;
-                                me.drawTable( me.mod );
-                                break;
-                            case  2 :
-                                me.mod = 2;
-                                me.drawTable( me.mod );
-                                break;
-                            default:
-                                me.drawTable( me.mod , true );
-                        }
 
-//                        if( counter == 8 ){
-//                            me.mod = 10;
-//                            me.drawTable( me.mod );
-//                        }else if( counter == 6 ){
-//                            me.mod = 8;
-//                            me.drawTable( me.mod );
-//                        }else if( counter == 4 ){
-//                            me.mod = 6;
-//                            me.drawTable( me.mod );
-//                        }else if(counter == 2){
-//                            me.mod = 4;
-//                            me.drawTable( me.mod );
-//                        }else{
-//                            me.drawTable( me.mod , true );
-//                        }
+                        if( me.ruleMap[ counter ] ){
+                            me.mod = me.ruleMap[ counter ] ;
+                            me.drawTable( me.mod );
+                        }else{
+                            me.drawTable( me.mod , true );
+                        }
                     }
                 }
             });
