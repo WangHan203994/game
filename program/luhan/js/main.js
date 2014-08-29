@@ -4,6 +4,7 @@
 (function( window , $ ){
 
     var map = { 0 : 2 , 2 : 4 , 4 : 6 , 6 : 8 }; //key : mod
+    var gameArea = $('#gameArea').css( {'width' : Math.min( $(window).height() , $(window).width() * 0.9 ) });
 
     var app = {
         ruleMap : map,
@@ -11,9 +12,9 @@
         normalImg : 'skin/images/1.jpg',
         targetImg : 'skin/images/2.jpg',
         tds : null,
-        tableHeigth : Math.floor($(window).height() * 0.6),
+        totalWidth :gameArea.width(),
         rightClass : 'right',
-        container : $('#gameArea'),
+        container : gameArea,
         counter : 0,
         counterBox : $('#count'),
         timelimit : 60,
@@ -65,7 +66,7 @@
         },
         drawTable : function( mod , switchOn ){
             var random = Math.floor( Math.random() * mod * mod );
-            var length = Math.floor( this.tableHeigth / mod );
+            var length = Math.ceil( this.totalWidth / mod );
             if( !switchOn ){
                 var tdTmpl = '<td><img width="'+length+'" height="'+length+'" src="'+this.normalImg+'"></td>';
                 var tdRightTmpl = '<td class="right"><img width="'+length+'" height="'+length+'" src="'+this.targetImg+'"></td>';
