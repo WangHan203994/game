@@ -12,24 +12,36 @@
         normalImg : 'skin/images/1.jpg',
         targetImg : 'skin/images/2.jpg',
         tds : null,
+        tempRecord : null ,
         totalWidth :gameArea.width(),
         rightClass : 'right',
         container : gameArea,
         counter : 0,
         counterBox : $('#count'),
-        timelimit : 60,
+        timelimit : 5,
         timelimitBox : $('#time'),
         status : true ,
         init : function(){
-            this.initEvent();
-            this.drawTable( this.mod );
-            this.initTimer();
 
             if( !window.name ){
                 window.name = JSON.stringify({
                     current : 0,
-                    best : 0
+                    best : 0,
+                    gift : 0
                 });
+                this.initGift();
+            }
+
+            this.initEvent();
+            this.drawTable( this.mod );
+            this.initTimer();
+        },
+        initGift : function(){
+            this.tempRecord = JSON.parse(window.name);
+            if( this.tempRecord.gift ){
+                this.timelimit += this.tempRecord.gift;
+                this.tempRecord.gift = 0;
+                window.name = JSON.stringify(obj);
             }
         },
         initTimer : function(){
@@ -93,7 +105,7 @@
             }
         },
         record : function(){
-            var tempObj = JSON.parse(window.name);
+            var tempObj = this.tempRecord;
             if( tempObj.best < this.counter  ){
                 tempObj.best = this.counter;
             }

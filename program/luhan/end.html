@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title></title>
     <link rel="stylesheet" href="skin/global.css">
-    <!--<script type="text/javascript" src="http://zeptojs.com/zepto.min.js"></script>-->
+    <script type="text/javascript" src="js/zepto.js"></script>
 </head>
 <body>
     <div class="main">
@@ -23,39 +23,12 @@
         </p>
 
         <a href="luhan.html" class="btn">再次挑战</a>
-
+    </div>
+    <div class="adContainer">
+        <a class="ad" href="http://www.baidu.com">
+            <img src="skin/images/ad.jpg" />
+        </a>
     </div>
 </body>
-<script type="text/javascript">
-    (function(){
-        if( window.name ){
-            var obj = JSON.parse( window.name );
-            var app = {
-                init : function(){
-                    this.initRecord();
-                    this.initShare();
-                    this.initLevel();
-                },
-                initRecord : function(){
-                    var result = obj.current;
-                    var best = obj.best;
-                    document.getElementById('result').innerHTML = result;
-                    document.getElementById('iValue').innerHTML = result;
-                    document.getElementById('best').innerHTML = best;
-                },
-                initLevel : function(){
-
-                    document.getElementById('rate').innerHTML = 90;
-                    document.getElementById('title').innerHTML = '鹿晗的小背心';
-                },
-                initShare : function(){
-                    var text = document.getElementById('share').innerText;
-                    console.log( text );
-                }
-            };
-
-            app.init();
-        }
-    })();
-</script>
+<script type="text/javascript" src="js/end.js"></script>
 </html>
