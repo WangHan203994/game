@@ -11,7 +11,7 @@ body {
     -webkit-text-size-adjust: none;
 }
 
-header{margin:2em auto 5em;}
+header{margin:2em auto 3em;}
 h1{text-align: center;}
 table {width:90%;border:none;margin:0;padding:0;border-spacing: 0;border-collapse:collapse;}
 .hide{display: none;}
@@ -55,7 +55,6 @@ td img{
 /**  end  **/
 .adContainer{padding: 0;margin: 0 auto;width: 90%;}
 .adContainer a{display: block;width: 100%;height: 30%;}
-.adContainer a{width: 100%;height: 100%;}
 
 /*table.r50 img{*/
     /*width: 100%;*/

@@ -4,21 +4,36 @@
 (function( window , $ ){
 
     var map = { 0 : 2 , 2 : 4 , 4 : 6 , 6 : 8 }; //key : mod
-    var gameArea = $('#gameArea').css( {'width' : Math.min( $(window).height() , $(window).width() * 0.9 ) });
+    var getWidth = function(){
+        var winHeight = $(window).height();
+        var winWidth = $(window).width();
+        var rate = winHeight / winWidth;
+        if( rate < 1.2 && rate > 0.65 ){
+            return winWidth * 0.60;
+        }else{
+            return winWidth * 0.9;
+        }
+    };
+    var totalWidth = getWidth();
+
+    var gameArea = $('#gameArea').css( {'width' : totalWidth } );
 
     var app = {
         ruleMap : map,
         mod : map['0'] ,
-        normalImg : 'skin/images/1.jpg',
-        targetImg : 'skin/images/2.jpg',
+        normalImg : 'skin/images/1.png',
+        targetImg : 'skin/images/2.png',
+        wrongImg : 'skin/images/3.png',
+        rightImg : 'skin/images/4.png',
         tds : null,
         tempRecord : null ,
-        totalWidth :gameArea.width(),
+        totalWidth : totalWidth,
         rightClass : 'right',
         container : gameArea,
         counter : 0,
         counterBox : $('#count'),
-        timelimit : 5,
+        timelimit : 60,
+        showTime : 1e3,
         timelimitBox : $('#time'),
         status : true ,
         init : function(){
@@ -30,6 +45,8 @@
                     gift : 0
                 });
                 this.initGift();
+            }else{
+                this.tempRecord = JSON.parse(window.name);
             }
 
             this.initEvent();
@@ -58,21 +75,38 @@
         initEvent : function(){
             var me = this;
             this.container.delegate( 'td' , 'click' , function(){
-                if( $(this).hasClass('right') ){
-                    me.counterBox.html(++me.counter);
-                    if( !me.status ){
-                        me.container.undelegate('td','click');
-                        me.record();
-                    }else{
-                        var counter = me.counter;
 
-                        if( me.ruleMap[ counter ] ){
-                            me.mod = me.ruleMap[ counter ] ;
-                            me.drawTable( me.mod );
+                if(gameArea.data('disable')){
+                    return ;
+                }
+
+                if( $(this).hasClass('right') ){
+                    $(this).find('img').attr( 'src' , me.rightImg );
+                    me.counterBox.html(++me.counter);
+                    gameArea.data('disable',true);
+
+                    var showTimer = setTimeout(function(){
+                        me.timelimit ++ ;
+                        gameArea.data('disable',false);
+
+                        if( !me.status ){
+                            me.container.undelegate('td','click');
+                            me.record();
                         }else{
-                            me.drawTable( me.mod , true );
+                            var counter = me.counter;
+
+                            if( me.ruleMap[ counter ] ){
+                                me.mod = me.ruleMap[ counter ] ;
+                                me.drawTable( me.mod );
+                            }else{
+                                me.drawTable( me.mod , true );
+                            }
                         }
-                    }
+                        clearTimeout(showTimer);
+                        showTimer = null;
+                    } , me.showTime );
+                }else{
+                    $(this).addClass('wrong').find('img').attr( 'src' , me.wrongImg );
                 }
             });
         },
@@ -99,7 +133,7 @@
                 this.container.html( temp );
                 this.tds = this.container.find('td');
             }else{
-                this.tds.filter('.right').html('<img width="'+length+'" height="'+length+'" src="'+this.normalImg+'">').removeClass('right');
+                this.tds.filter('.right , .wrong').html('<img width="'+length+'" height="'+length+'" src="'+this.normalImg+'">').removeClass('right');
                 this.tds.eq(random).html('<img width="'+length+'" height="'+length+'" src="'+this.targetImg+'">').addClass('right');
 
             }
