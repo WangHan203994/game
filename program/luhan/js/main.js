@@ -8,10 +8,10 @@
         var winHeight = $(window).height();
         var winWidth = $(window).width();
         var rate = winHeight / winWidth;
-        if( rate < 1.2 && rate > 0.65 ){
-            return winWidth * 0.60;
+        if( rate < 1.0 ){
+            return Math.min( winWidth , winHeight ) * 0.75;
         }else{
-            return winWidth * 0.9;
+            return Math.min( winWidth , winHeight )  * 0.9;
         }
     };
     var totalWidth = getWidth();
