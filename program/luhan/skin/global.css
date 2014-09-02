@@ -52,6 +52,11 @@ td img{
     margin: 0;
 }
 
+#showBox{
+    position:  absolute;
+    display: none;
+}
+
 /**  end  **/
 .adContainer{padding: 0;margin: 0 auto;width: 90%;}
 .adContainer a{display: block;width: 100%;height: 30%;}

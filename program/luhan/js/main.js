@@ -30,6 +30,7 @@
         totalWidth : totalWidth,
         rightClass : 'right',
         container : gameArea,
+        showBox :  $('#showBox'),
         counter : 0,
         counterBox : $('#count'),
         timelimit : 60,
@@ -52,6 +53,7 @@
             this.initEvent();
             this.drawTable( this.mod );
             this.initTimer();
+            this.initShowBox();
         },
         initGift : function(){
             this.tempRecord = JSON.parse(window.name);
@@ -81,9 +83,9 @@
                 }
 
                 if( $(this).hasClass('right') ){
-                    $(this).find('img').attr( 'src' , me.rightImg );
                     me.counterBox.html(++me.counter);
                     gameArea.data('disable',true);
+                    me.showBox.show();
 
                     var showTimer = setTimeout(function(){
                         me.timelimit ++ ;
@@ -102,6 +104,7 @@
                                 me.drawTable( me.mod , true );
                             }
                         }
+                        me.showBox.hide();
                         clearTimeout(showTimer);
                         showTimer = null;
                     } , me.showTime );
@@ -147,6 +150,12 @@
 
             window.name = JSON.stringify(tempObj);
             window.location.href = 'end.html';
+        },
+        initShowBox : function(){
+            var showBox = this.showBox;
+            var offset = this.container.offset();
+            showBox.css({ top : offset.top , left : offset.left });
+            showBox.find('img').attr({ width : this.container.width() , height : this.container.height() });
         }
     };
 
