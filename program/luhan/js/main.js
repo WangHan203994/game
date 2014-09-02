@@ -135,7 +135,7 @@
                 }
                 this.container.html( temp );
                 this.tds = this.container.find('td');
-                this.showBox.css({ width : this.container.width() , height : this.container.height() });
+                this.initShowBox();
             }else{
                 this.tds.filter('.right , .wrong').html('<img width="'+length+'" height="'+length+'" src="'+this.normalImg+'">').removeClass('right');
                 this.tds.eq(random).html('<img width="'+length+'" height="'+length+'" src="'+this.targetImg+'">').addClass('right');
