@@ -40,11 +40,11 @@
                     }
                     obj.gift = gift;
                     window.name = JSON.stringify(obj);
-
-                    setTimeout( function(){
-                        window.location.href = me.adConfig.href;
-                    } , 1000);
-                    return false;
+                    $('#giftTime').html('恭喜你！下次游戏开始时你获得了 <span class="red">'+ gift +'s </span>的额外时间哟~');
+//                    setTimeout( function(){
+//                        window.location.href = me.adConfig.href;
+//                    } , 1000);
+//                    return false;
                 });
             },
             initShare : function(){

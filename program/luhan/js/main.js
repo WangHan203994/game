@@ -45,9 +45,8 @@
                     best : 0,
                     gift : 0
                 });
-                this.initGift();
             }else{
-                this.tempRecord = JSON.parse(window.name);
+                this.initGift();
             }
 
             this.initEvent();
@@ -60,7 +59,8 @@
             if( this.tempRecord.gift ){
                 this.timelimit += this.tempRecord.gift;
                 this.tempRecord.gift = 0;
-                window.name = JSON.stringify(obj);
+                window.name = JSON.stringify(this.tempRecord);
+                this.timelimitBox.addClass('red');
             }
         },
         initTimer : function(){
@@ -135,6 +135,7 @@
                 }
                 this.container.html( temp );
                 this.tds = this.container.find('td');
+                this.showBox.css({ width : this.container.width() , height : this.container.height() });
             }else{
                 this.tds.filter('.right , .wrong').html('<img width="'+length+'" height="'+length+'" src="'+this.normalImg+'">').removeClass('right');
                 this.tds.eq(random).html('<img width="'+length+'" height="'+length+'" src="'+this.targetImg+'">').addClass('right');
@@ -155,7 +156,7 @@
             var showBox = this.showBox;
             var offset = this.container.offset();
             showBox.css({ top : offset.top , left : offset.left });
-            showBox.find('img').attr({ width : this.container.width() , height : this.container.height() });
+            showBox.css({ width : this.container.width() , height : this.container.height() });
         }
     };
 
