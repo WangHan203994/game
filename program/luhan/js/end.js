@@ -48,8 +48,10 @@
                 });
             },
             initShare : function(){
-                var text = document.getElementById('share').innerText;
-                console.log( text );
+                window.imgUrl = '../skin/images/4.png';
+                window.lineLink = window.location.href;
+                window.descContent = document.getElementById('share').innerText;
+                window.shareTitle = '亲亲鹿晗';
             }
         };
 
