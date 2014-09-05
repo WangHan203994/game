@@ -2,8 +2,9 @@
  * Created by wh on 2014/8/25.
  */
 (function( window , $ ){
+    FastClick.attach(document.body);
 
-    var map = { 0 : 2 , 2 : 4 , 4 : 6 , 6 : 8 }; //key : mod
+    var map = { 0 : 2 , 2 : 4 , 4 : 6 , 6 : 8 , 10 : 10}; //key : mod
     var getWidth = function(){
         var winHeight = $(window).height();
         var winWidth = $(window).width();
@@ -45,10 +46,9 @@
                     best : 0,
                     gift : 0
                 });
-            }else{
-                this.initGift();
             }
 
+            this.initGift();
             this.initEvent();
             this.drawTable( this.mod );
             this.initTimer();
