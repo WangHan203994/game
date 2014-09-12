@@ -4,12 +4,24 @@
 (function( window , $){
     if( window.name ){
         var obj = JSON.parse( window.name );
+
         var app = {
             maxGift : 31,
             adConfig : {
                 href : 'http://tv.sohu.com',
                 imgUrl : 'skin/images/ad.jpg',
                 goToTime : 1000 //多少秒后进行跳转
+            },
+            titleRule : {
+                t1 : '鹿晗的炸鸡', // 0 - 5
+                t2 : '鹿晗的火锅粉儿',// 6 - 10
+                t3 : '鹿晗的小苹果' , // 11 - 15
+                t4 : '鹿晗的香波' , // 16 - 20
+                t5 : '迷惑鹿晗的小妖精',// 21 - 25
+                t6 : '鹿晗的润唇膏',// 26 - 30,
+                t7 : '鹿晗的小肥皂', // 31 - 35,
+                t8 : '鹿晗的润滑油', // 36 - 40,
+                t9 : '鹿晗的女王大人' // >40
             },
             init : function(){
                 this.initRecord();
@@ -25,9 +37,42 @@
                 document.getElementById('best').innerHTML = best;
             },
             initLevel : function(){
+                var record = obj.current;
+                var me = this;
+                var rate , title;
 
-                document.getElementById('rate').innerHTML = 90;
-                document.getElementById('title').innerHTML = '鹿晗的小背心';
+                if( !record ){
+                    rate = 0;
+                    title = me.titleRule.t1;
+                }else if( record == 1){
+                    rate = 0.02;
+                    title = me.titleRule.t1;
+                }else if(record > 40){
+                    rate = 1;
+                    title = me.titleRule.t9;
+                }else{
+                    rate = 0.308 * Math.log(record) - 0.14;
+                    if( record > 0 && record <= 5 ){
+                        title = me.titleRule.t1;
+                    }else if( record > 5 && record <= 10 ){
+                        title = me.titleRule.t2;
+                    }else if( record > 10 && record <= 15 ){
+                        title = me.titleRule.t3;
+                    }else if( record > 15 && record <= 20 ){
+                        title = me.titleRule.t4;
+                    }else if( record > 20 && record <= 25 ){
+                        title = me.titleRule.t5;
+                    }else if( record > 25 && record <= 30 ){
+                        title = me.titleRule.t6;
+                    }else if( record > 30 && record <= 35 ){
+                        title = me.titleRule.t7;
+                    }else if( record > 35 && record <= 40 ){
+                        title = me.titleRule.t8;
+                    }
+                }
+
+                document.getElementById('rate').innerHTML = (rate * 100).toFixed(1);
+                document.getElementById('title').innerHTML = title;
             },
             initAD : function(){
                 var me = this;
