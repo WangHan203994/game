@@ -4,7 +4,7 @@
 (function( window , $ ){
     FastClick.attach(document.body);
 
-    var map = { 0 : 2 , 2 : 4 , 4 : 6 , 6 : 8 , 10 : 10}; //key : mod
+    var map = { 0 : 2 , 2 : 3 , 4 : 4 , 6 : 5 , 10 : 6 , 12 : 7 , 14 : 8}; //key : mod
     var getWidth = function(){
         var winHeight = $(window).height();
         var winWidth = $(window).width();

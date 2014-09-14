@@ -7,6 +7,7 @@
 
         var app = {
             maxGift : 31,
+            baseUrl : 'http://yiqi.pub/game/luhan',
             adConfig : {
                 href : 'http://tv.sohu.com',
                 imgUrl : 'skin/images/ad.jpg',
@@ -93,10 +94,14 @@
                 });
             },
             initShare : function(){
-                window.imgUrl = '../skin/images/4.png';
-                window.lineLink = window.location.href;
-                window.descContent = document.getElementById('share').innerText;
-                window.shareTitle = '亲亲鹿晗';
+                if(window.myWeixinApp){
+                    window.myWeixinApp.initShare(
+                        this.baseUrl + '/skin/images/4.png',
+                        this.baseUrl + '/index.html',
+                        document.getElementById('share').innerText,
+                        '亲亲鹿晗'
+                    );
+                }
             }
         };
 
