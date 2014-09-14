@@ -94,10 +94,11 @@
                 });
             },
             initShare : function(){
+                var me = this;
                 WeixinApi.ready(function(Api) {
                     var wxData = {
-                        "imgUrl": this.baseUrl + '/skin/images/4.png',
-                        "link": this.baseUrl + '/index.html',
+                        "imgUrl": me.baseUrl + '/skin/images/4.png',
+                        "link": me.baseUrl + '/index.html',
                         "desc": document.getElementById('share1').innerText + document.getElementById('share2').innerText,
                         "title": '亲亲鹿晗'
                     };
