@@ -26,9 +26,9 @@
             },
             init : function(){
                 this.initRecord();
-                this.initShare();
                 this.initLevel();
                 this.initAD();
+                this.initShare();
             },
             initRecord : function(){
                 var result = obj.current;
@@ -94,14 +94,18 @@
                 });
             },
             initShare : function(){
-                if(window.myWeixinApp){
-                    window.myWeixinApp.initShare(
-                        this.baseUrl + '/skin/images/4.png',
-                        this.baseUrl + '/index.html',
-                        document.getElementById('share').innerText,
-                        '亲亲鹿晗'
-                    );
-                }
+                WeixinApi.ready(function(Api) {
+                    var wxData = {
+                        "imgUrl": this.baseUrl + '/skin/images/4.png',
+                        "link": this.baseUrl + '/index.html',
+                        "desc": document.getElementById('share1').innerText + document.getElementById('share2').innerText,
+                        "title": '亲亲鹿晗'
+                    };
+
+                    Api.shareToFriend(wxData);
+                    Api.shareToTimeline(wxData);
+                    Api.shareToWeibo(wxData);
+                });
             }
         };
 

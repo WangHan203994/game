@@ -2,7 +2,7 @@ html{overflow: hidden;}
 *{margin:0;padding:0}
 a , a:hover{text-decoration: none;}
 img{vertical-align: top;}
-
+a[href="http://www.51.la/?17312748"]{display: none}
 body {
     min-width: 320px;
     font-size: 1em;
