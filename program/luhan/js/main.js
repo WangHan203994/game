@@ -4,7 +4,7 @@
 (function( window , $ ){
     FastClick.attach(document.body);
 
-    var map = { 0 : 2 , 2 : 3 , 4 : 4 , 6 : 5 , 10 : 6 , 12 : 7 , 14 : 8}; //key : mod
+    var map = { 0 : 2 , 3 : 3 , 6 : 4 , 9 : 5 }; //key : mod
     var getWidth = function(){
         var winHeight = $(window).height();
         var winWidth = $(window).width();
@@ -35,7 +35,7 @@
         counter : 0,
         counterBox : $('#count'),
         timelimit : 60,
-        showTime : 1e3,
+        showTime : 500,
         timelimitBox : $('#time'),
         status : true ,
         init : function(){
