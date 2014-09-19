@@ -16,11 +16,11 @@ h1{text-align: center;}
 table {width:90%;border:none;margin:0;padding:0;border-spacing: 3px;}
 .hide{display: none;}
 
-.btn_container{width: 100%;position: absolute;bottom: 50px;height:81px;}
+.btn_container{width: 100%;position: absolute;bottom: 13%;height:41px;}
 img.bg{width: 100%;height: 100%;position: absolute;z-index: -1;}
 /** index **/
 .index{width: 100%;height: 100%;position: absolute;z-index: -1;}
-.btn{width:215px;height:61px;display: block;margin: 0 auto;}
+.btn{width: 145px;height: 41px;display: block;margin: 0 auto;}
 .btn img{width: 100%;height: 100%;}
 /** game page **/
 .main{
@@ -76,8 +76,6 @@ td img{
 .art1{position: absolute;z-index: 10;left: 130px;top: 35px;}
 .art1 span{display: block;margin-bottom: 3px;}
 #title{color: #ffe400;}
-
-.wrap .btn{width: 145px;height: 41px;}
 
 #giftTime{color: #888;}
 .adContainer{padding: 0;margin: -1em auto 0;width: 90%;display:none;}
