@@ -34,8 +34,8 @@
                 var result = obj.current;
                 var best = obj.best;
                 document.getElementById('result').innerHTML = result;
-                document.getElementById('iValue').innerHTML = result;
-                document.getElementById('best').innerHTML = best;
+                document.getElementById('iValue').innerHTML = '爱慕值 ：'+result;
+//                document.getElementById('best').innerHTML = best;
             },
             initLevel : function(){
                 var record = obj.current;
@@ -99,7 +99,7 @@
                     var wxData = {
                         "imgUrl": me.baseUrl + '/skin/images/4.png',
                         "link": me.baseUrl + '/index.html',
-                        "desc": document.getElementById('share1').innerText + document.getElementById('share2').innerText,
+                        "desc":  '获得称号：' + document.getElementById('title').innerText + '!'+ document.getElementById('share1').innerText,
                         "title": '亲亲鹿晗'
                     };
 

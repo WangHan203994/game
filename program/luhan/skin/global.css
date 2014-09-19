@@ -20,24 +20,22 @@ table {width:90%;border:none;margin:0;padding:0;border-spacing: 3px;}
 img.bg{width: 100%;height: 100%;position: absolute;z-index: -1;}
 /** index **/
 .index{width: 100%;height: 100%;position: absolute;z-index: -1;}
-.index .btn{width:215px;height:61px;display: block;margin: 0 auto;}
-.index .btn img{width: 100%;height: 100%;}
-.start{background-position: 0 0;}
-
+.btn{width:215px;height:61px;display: block;margin: 0 auto;}
+.btn img{width: 100%;height: 100%;}
 /** game page **/
 .main{
     width: 100%;
     height: 100%;
 }
 
-.main header{padding-top: 10px;color: #f385d0;font-size: 1em;}
+.main header{padding-top: 10px;}
 .main header label{float:left;}
 #time{display: block;background-color:#828dd7;color: #fff;width: 47px;height: 37px;line-height:37px;text-align:center;margin:0 auto;border-radius: 9px;-webkit-border-radius: 9px;-moz-border-radius: 9px;}
 
 .gc{margin: 2em auto;width: 90%;}
 .gc td{ border: 2px solid #000; }
 
-header label{margin-left: 20px;}
+header label{margin-left: 20px;color: #f385d0;font-size: 1em;}
 .box{
     padding: 5px;
     display: inline-block;
@@ -66,6 +64,21 @@ td img{
 #showBox img{width: 100%;}
 
 /**  end  **/
+.bd{font-size: 18px;font-weight: bold;}
+.wrap{width: 320px;height: 480px;margin: 0 auto;font-size: 1em;color: #fff;}
+.wrap header,
+.wrap p{margin: 0 auto;width: 90%;position: relative;padding-top: 20px;}
+.wrap header{height: 25%;}
+.wrap p{height: 90px;width: 85%;}
+.wrap header img{width: 100%;position: absolute;z-index:-1;}
+.wrap p label{color: #ff72ae;}
+
+.art1{position: absolute;z-index: 10;left: 130px;top: 35px;}
+.art1 span{display: block;margin-bottom: 3px;}
+#title{color: #ffe400;}
+
+.wrap .btn{width: 145px;height: 41px;}
+
 #giftTime{color: #888;}
 .adContainer{padding: 0;margin: -1em auto 0;width: 90%;display:none;}
 .adContainer a{display: block;width: 100%;height: 30%;}
