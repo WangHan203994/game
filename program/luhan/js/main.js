@@ -35,7 +35,7 @@
         counter : 0,
         counterBox : $('#count'),
         timelimit : 60,
-        showTime : 500,
+        showTime : 300,
         timelimitBox : $('#time'),
         status : true ,
         init : function(){
@@ -88,7 +88,7 @@
                     me.showBox.show();
 
                     var showTimer = setTimeout(function(){
-                        me.timelimit ++ ;
+//                        me.timelimit ++ ;
                         gameArea.data('disable',false);
 
                         if( !me.status ){
@@ -115,7 +115,7 @@
         },
         drawTable : function( mod , switchOn ){
             var random = Math.floor( Math.random() * mod * mod );
-            var length = Math.ceil( this.totalWidth / mod );
+            var length = Math.ceil( this.totalWidth / mod ) - 8;
             if( !switchOn ){
                 var tdTmpl = '<td><img width="'+length+'" height="'+length+'" src="'+this.normalImg+'"></td>';
                 var tdRightTmpl = '<td class="right"><img width="'+length+'" height="'+length+'" src="'+this.targetImg+'"></td>';

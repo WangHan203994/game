@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head lang="en">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" charset="UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
+          charset="UTF-8"/>
     <title>亲亲鹿晗</title>
     <link rel="stylesheet" href="skin/global.css">
     <script type="text/javascript" src="js/lib/zepto.js"></script>
@@ -9,26 +11,26 @@
 </head>
 <body>
 <div class="main">
-<img src="skin/images/main_bg.jpg" class="bg">
-<header>
-    <label>亲亲次数: <span id="count">0</span></label>
-    <label class="box">倒计时: <span id="time">60</span> s</label>
-</header>
-<div class="main">
-    <table id="gameArea" class="r50" cellspacing="0" cellpadding="0">
-        <tr>
-            <td>0</td>
-            <td>0</td>
-        </tr>
-        <tr>
-            <td>0</td>
-            <td>0</td>
-        </tr>
-    </table>
-</div>
-<div id="showBox">
-    <img src="skin/images/4.png">
-</div>
+    <img src="skin/images/main_bg.jpg" class="bg">
+    <header>
+        <label>亲亲次数: <span id="count">0</span></label>
+        <span id="time">60</span>
+    </header>
+    <div class="gc">
+        <table id="gameArea" cellspacing="10" cellpadding="10" >
+            <tr>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+        </table>
+    </div>
+    <div id="showBox">
+        <img src="skin/images/4.png">
+    </div>
 </div>
 <script type="text/javascript" src="js/main.js"></script>
 </body>
