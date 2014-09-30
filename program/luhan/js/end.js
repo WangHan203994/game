@@ -29,6 +29,7 @@
                 this.initLevel();
                 this.initAD();
                 this.initShare();
+                this.initCover();
             },
             initRecord : function(){
                 var result = obj.current;
@@ -79,7 +80,7 @@
                 var me = this;
                 var ad = $('a.ad');
                 ad.find('img').attr( 'src' , me.adConfig.imgUrl );
-                $('a.ad').click(function(){
+                ad.click(function(){
                     var gift = Math.ceil( Math.random() * me.maxGift );
                     if(gift < 5){
                         gift = 5;
@@ -107,9 +108,43 @@
                     Api.shareToTimeline(wxData);
                     Api.shareToWeibo(wxData);
                 });
+            },
+            initCover : function(){
+                $('#shareBtn').click(function(){
+                    var cover = $('#cover');
+                    var myCanvas = $('<canvas></canvas>');
+
+                    var winHeight = $(window).height();
+                    var winWidth = $(window).width();
+
+                    cover.css( { height : winHeight , width : winWidth } );
+                    cover.html(myCanvas);
+                    cover.show();
+                    return false;
+                });
+
+                $('#cover').click(function(){
+                    $(this).hide();
+                });
             }
         };
 
         app.init();
     }
+
+    (function(){
+        $('#shareBtn').click(function(){
+            var cover = $('#cover');
+            var winHeight = $(window).height();
+            var winWidth = $(window).width();
+            cover.css( { height : winHeight , width : winWidth } );
+            cover.show();
+            return false;
+        });
+
+        $('#cover').click(function(){
+            $(this).hide();
+        });
+    })();
+
 })( window , $ );
