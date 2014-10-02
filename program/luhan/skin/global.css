@@ -5,6 +5,7 @@ img{vertical-align: top;}
 a[href="http://www.51.la/?17312748"]{display: none}
 body {
     min-width: 320px;
+    height: 100%;
     font-size: 1em;
     font-family: microsoft Yahei,Verdana,Arial,Helvetica,sans-serif;
     color: #333;
@@ -42,10 +43,20 @@ table {width:90%;border:none;margin:0;padding:0;border-spacing: 3px;}
 .hide{display: none;}
 .rel{position: relative;}
 
+
 .btn_container{width: 100%;position: absolute;bottom: 13%;height:41px;}
 img.bg{width: 100%;height: 100%;position: absolute;z-index: -1;}
+
 /** index **/
-.index{width: 100%;height: 100%;position: absolute;z-index: -1;}
+.index{height: 100%;width: 100%;text-align: center;background-color: #121632;}
+@media screen and  (max-width: 320px){
+    .inbg{width:100%;height: 100%;}
+}
+
+@media screen and  (min-width: 321px){
+    .inbg{width:45%;height: 100%;}
+}
+
 .btn{width: 130px;height: 41px;display: block;margin: 0 auto;border-radius: 28px;-webkit-border-radius: 28px;-moz-border-radius: 28px;}
 .btn:hover , .btn:active{background-color: #c4427c; }
 .btn img{width: 100%;height: 100%;}
