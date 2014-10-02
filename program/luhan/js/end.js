@@ -112,13 +112,9 @@
             initCover : function(){
                 $('#shareBtn').click(function(){
                     var cover = $('#cover');
-                    var myCanvas = $('<canvas></canvas>');
-
                     var winHeight = $(window).height();
                     var winWidth = $(window).width();
-
                     cover.css( { height : winHeight , width : winWidth } );
-                    cover.html(myCanvas);
                     cover.show();
                     return false;
                 });
@@ -131,20 +127,5 @@
 
         app.init();
     }
-
-    (function(){
-        $('#shareBtn').click(function(){
-            var cover = $('#cover');
-            var winHeight = $(window).height();
-            var winWidth = $(window).width();
-            cover.css( { height : winHeight , width : winWidth } );
-            cover.show();
-            return false;
-        });
-
-        $('#cover').click(function(){
-            $(this).hide();
-        });
-    })();
 
 })( window , $ );
