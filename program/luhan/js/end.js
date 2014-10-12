@@ -101,7 +101,7 @@
                         "imgUrl": me.baseUrl + '/skin/images/4.png',
                         "link": me.baseUrl + '/index.html',
                         "desc":  '获得称号：' + document.getElementById('title').innerText + '!'+ document.getElementById('share1').innerText,
-                        "title": '亲亲鹿晗'
+                        "title": '我在EXO里找到了鹿晗！获得鹿晗的吻~你也快来试试！'
                     };
 
                     Api.shareToFriend(wxData);

@@ -44,7 +44,7 @@ table {width:90%;border:none;margin:0;padding:0;border-spacing: 3px;}
 .rel{position: relative;}
 
 
-.btn_container{width: 100%;position: absolute;bottom: 13%;height:41px;}
+.btn_container{width: 100%;position: absolute;bottom: 10%;height:41px;}
 img.bg{width: 100%;height: 100%;position: absolute;z-index: -1;}
 
 /** index **/
